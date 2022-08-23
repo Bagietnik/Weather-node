@@ -1,0 +1,23 @@
+{
+  "name": "weatherapp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "node-red": {
+    "nodes": {
+      "weather": "app.js"
+    }
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.27.2",
+    "chalk": "^2.4.1",
+    "node": "^16.17.0",
+    "request": "^2.88.2",
+    "require": "^0.4.4"
+  }
+}

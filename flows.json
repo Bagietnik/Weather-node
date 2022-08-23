@@ -1,0 +1,205 @@
+[
+    {
+        "id": "5826bdd5f0ebef4b",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "528e1269b765aca1",
+        "type": "weather",
+        "z": "5826bdd5f0ebef4b",
+        "name": "",
+        "x": 620,
+        "y": 160,
+        "wires": [
+            [
+                "52a86f976abc56bc",
+                "15315ab080a16009"
+            ]
+        ]
+    },
+    {
+        "id": "52a86f976abc56bc",
+        "type": "debug",
+        "z": "5826bdd5f0ebef4b",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 780,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "15315ab080a16009",
+        "type": "json",
+        "z": "5826bdd5f0ebef4b",
+        "name": "",
+        "property": "payload",
+        "action": "obj",
+        "pretty": false,
+        "x": 790,
+        "y": 220,
+        "wires": [
+            [
+                "2f4b0ee607d9ae40"
+            ]
+        ]
+    },
+    {
+        "id": "2f4b0ee607d9ae40",
+        "type": "debug",
+        "z": "5826bdd5f0ebef4b",
+        "name": "debug 2",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 940,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "f5deaa5e7fc3709f",
+        "type": "OpcUa-Client",
+        "z": "5826bdd5f0ebef4b",
+        "endpoint": "65940f1fc5767066",
+        "action": "read",
+        "deadbandtype": "a",
+        "deadbandvalue": 1,
+        "time": 10,
+        "timeUnit": "s",
+        "certificate": "n",
+        "localfile": "",
+        "localkeyfile": "",
+        "securitymode": "None",
+        "securitypolicy": "None",
+        "folderName4PKI": "",
+        "name": "",
+        "x": 440,
+        "y": 140,
+        "wires": [
+            [
+                "528e1269b765aca1"
+            ]
+        ]
+    },
+    {
+        "id": "d890de4e3cf6e9c9",
+        "type": "OpcUa-Item",
+        "z": "5826bdd5f0ebef4b",
+        "item": "ns=1;s=City1",
+        "datatype": "String",
+        "value": "",
+        "name": "City1",
+        "x": 270,
+        "y": 120,
+        "wires": [
+            [
+                "f5deaa5e7fc3709f"
+            ]
+        ]
+    },
+    {
+        "id": "d756970e06e28aa8",
+        "type": "inject",
+        "z": "5826bdd5f0ebef4b",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 120,
+        "y": 100,
+        "wires": [
+            [
+                "d890de4e3cf6e9c9"
+            ]
+        ]
+    },
+    {
+        "id": "c0d8191b2dbcd127",
+        "type": "comment",
+        "z": "5826bdd5f0ebef4b",
+        "name": "Odczyt z OPCUA",
+        "info": "",
+        "x": 340,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "ae842b1e3f4f20d2",
+        "type": "inject",
+        "z": "5826bdd5f0ebef4b",
+        "d": true,
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "Tokyo",
+        "payloadType": "str",
+        "x": 470,
+        "y": 220,
+        "wires": [
+            [
+                "528e1269b765aca1"
+            ]
+        ]
+    },
+    {
+        "id": "43c8af48ce3aa522",
+        "type": "comment",
+        "z": "5826bdd5f0ebef4b",
+        "name": "Odczyt z palca",
+        "info": "",
+        "x": 460,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "65940f1fc5767066",
+        "type": "OpcUa-Endpoint",
+        "endpoint": "opc.tcp://rpi-piotrek-b:26543",
+        "secpol": "None",
+        "secmode": "None",
+        "none": true,
+        "login": false,
+        "usercert": false,
+        "usercertificate": "",
+        "userprivatekey": ""
+    }
+]

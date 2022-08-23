@@ -1,0 +1,26 @@
+<script type="text/javascript">
+    RED.nodes.registerType('weather',{
+        category: 'function',
+        color: '#a6bbcf',
+        defaults: {
+            name: {value:""}
+        },
+        inputs:1,
+        outputs:1,
+        icon: "cloud.png",
+        label: function() {
+            return this.name||"weather";
+        }
+    });
+</script>
+
+<script type="text/html" data-template-name="weather">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+</script>
+
+<script type="text/html" data-help-name="lower-case">
+    <p>A simple node that shows current weather in Wroclaw</p>
+</script>
